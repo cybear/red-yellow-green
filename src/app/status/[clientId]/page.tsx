@@ -6,20 +6,17 @@ import React from "react";
 const statusColors = ['red', 'yellow', 'green'];
 
 const Status: React.FC = () => {
-
   const [activeColor, setActiveColor] = React.useState('red');
-
   const clientId = useParams()?.clientId;
 
   return (
     <div>
       {statusColors
         .map((color) =>
-          <div key={color}>
+          <div key={color} onClick={() => setActiveColor(color)}>
             <Light
               color={color}
               isActive={color === activeColor}
-              onClick={() => setActiveColor(color)}
             />
           </div>
         )}
