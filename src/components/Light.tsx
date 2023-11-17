@@ -11,12 +11,14 @@ const Light: React.FC<LightProps> = ({ color, isActive, onClick }) => {
     <svg width="200" height="200" onClick={onClick}>
       <defs>
         <linearGradient id="Highlight">
-          <stop stopColor='#fff' offset="0%" />
-          <stop stopColor="#fff" stopOpacity="0" offset="100%" />
+          <stop stopColor='#fff' stopOpacity="0" offset="0%" />
+          <stop stopColor="#fff" stopOpacity="1" offset="50%" />
+          <stop stopColor='#fff' stopOpacity="0" offset="100%" />
         </linearGradient>
         <linearGradient id="Shadow">
           <stop stopColor='#000' stopOpacity="0.7" offset="0%" />
-          <stop stopColor="#000" stopOpacity="1" offset="100%" />
+          <stop stopColor="#000" stopOpacity="1" offset="50%" />
+          <stop stopColor='#000' stopOpacity="0.7" offset="100%" />
         </linearGradient>
       </defs>
       <circle
