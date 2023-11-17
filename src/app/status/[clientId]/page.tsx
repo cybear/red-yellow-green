@@ -1,10 +1,16 @@
-import React from 'react';
-import Light from '../../components/Light';
+'use client'
+import Light from "@/components/Light";
+import { useParams } from "next/navigation";
+import React from "react";
 
 const statusColors = ['red', 'yellow', 'green'];
 
 const Status: React.FC = () => {
+
   const [activeColor, setActiveColor] = React.useState('red');
+
+  const clientId = useParams()?.clientId;
+
   return (
     <div>
       {statusColors
@@ -17,6 +23,7 @@ const Status: React.FC = () => {
             />
           </div>
         )}
+        <p>Client ID: {clientId}</p>
     </div>
   );
 };
