@@ -1,11 +1,13 @@
 import React from 'react';
 import Light from '../../components/Light';
 
+const statusColors = ['red', 'yellow', 'green'];
+
 const Status: React.FC = () => {
   const [activeColor, setActiveColor] = React.useState('red');
   return (
     <div>
-      {['red', 'yellow', 'green']
+      {statusColors
         .map((color) =>
           <div key={color}>
             <Light
