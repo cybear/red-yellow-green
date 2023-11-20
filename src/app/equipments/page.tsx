@@ -1,20 +1,7 @@
 import Light from '@/components/Light';
+import equipmentList from '@/utils/equipment';
 import Link from 'next/link';
 import React from 'react';
-
-const equipmentList: Array<{
-  equipmentId: string;
-  status: Array<'red' | 'yellow' | 'green'>;
-}> = [];
-
-const randomStatus = () => Math.random() < 1 / 3 ? 'red' : Math.random() < 2 / 3 ? 'yellow' : 'green';
-
-for (let i = 0; i < 20; i++) {
-  equipmentList.push({
-    equipmentId: i.toString(),
-    status: [randomStatus()]
-  });
-}
 
 const Equipments = () => {
   return <div>
