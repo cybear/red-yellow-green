@@ -7,7 +7,7 @@ const statusColors = ['red', 'yellow', 'green'];
 
 const Status: React.FC = () => {
   const [activeColor, setActiveColor] = React.useState('red');
-  const clientId = useParams()?.clientId;
+  const equipmentId = useParams()?.equipmentId;
 
   return (
     <div>
@@ -20,7 +20,7 @@ const Status: React.FC = () => {
             />
           </div>
         )}
-        <p>Client ID: {clientId}</p>
+        <p>Client ID: {equipmentId}</p>
     </div>
   );
 };

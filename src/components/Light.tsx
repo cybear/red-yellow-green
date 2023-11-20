@@ -3,11 +3,13 @@ import React from 'react';
 type LightProps = {
   color: string;
   isActive?: boolean;
+  width?: number;
+  height?: number;
 };
 
-const Light: React.FC<LightProps> = ({ color, isActive }) => {
+const Light: React.FC<LightProps> = ({ color, isActive, width = 200, height = 200 }) => {
   return (
-    <svg width="200" height="200">
+    <svg width={width} height={height} viewBox="0 0 200 200">
       <defs>
         <linearGradient id="Highlight">
           <stop stopColor='#fff' stopOpacity="0" offset="0%" />
