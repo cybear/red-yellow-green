@@ -20,17 +20,24 @@ async function getData(equipmentId: string): Promise<Equipment> {
 
 const Equipment = ({ equipment }: { equipment: Equipment }) => {
   const reversedStatus = equipment.status.reverse();
+  const reversedOrders = equipment.orders.reverse();
   const [currentStatus, ...historicalStatus] = reversedStatus;
+  const [currentOrder, ...historicalOrders] = reversedOrders;
   return (<><h1>Equipment {equipment.equipmentId}</h1>
     <br /><br />
-    <h2>Current Status</h2>
-    
+    <h2>Current Status and job</h2>
+    <p>Job: {currentOrder}</p>
     <Light color={currentStatus} isActive />
     <br /><br />
     <h2>Historical Status</h2>
     {historicalStatus.map((status, index) => (
       <Light key={index} color={status} width={100} />
-    ))}</>)
+    ))}
+    <h2>Historical Orders</h2>
+    {historicalOrders.map((order, index) => (
+      <div key={index}>{order}</div>
+    ))}
+  </>);
 };
 
 

@@ -9,10 +9,13 @@ const Equipments = () => {
     <div style={{ display: 'flex', flexFlow: 'wrap' }}>
       {equipmentList.map((equipment) => {
         const lastStatus = equipment.status[equipment.status.length - 1];
+        const lastOrder = equipment.orders[equipment.orders.length - 1];
         return (
-          <Link key={equipment.equipmentId} href={`/equipments/${equipment.equipmentId}`}>
+          <Link key={equipment.equipmentId} href={`/equipments/${equipment.equipmentId}`} style={{border: '1px solid black', margin: 10, padding: 10 }}>
+            <h3>Equipment {equipment.equipmentId}</h3>
             <Light color={lastStatus} isActive />
-            <h3 style={{ textAlign: 'center' }}>{equipment.equipmentId}</h3>
+            <br/>
+            Job: {lastOrder}
             <br /><br />
           </Link>
         )
