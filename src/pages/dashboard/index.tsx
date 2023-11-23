@@ -18,7 +18,7 @@ const Dashboard: React.FC = () => {
       <h1>Dashboard</h1>
       {equimentData.map((equipmentId) => (
       <div key={equipmentId}>
-        <h2><Link href={`/equipment/${equipmentId}`}></Link>{equipmentId}</h2>
+        <h2><Link href={`/status/${equipmentId}`}>{equipmentId}</Link></h2>
         <p>Status: <span style={{color: 'green'}}>Working</span></p>
         <p>Order: <span style={{color: 'green'}}>Order 1</span></p>
       </div>
