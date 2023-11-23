@@ -15,7 +15,6 @@ When the status changes from green to yellow, we can assume that the work is com
 */
 'use client'
 import Light from "@/components/Light";
-import { useParams } from "next/navigation";
 import { useRouter } from "next/router";
 import React from "react";
 
