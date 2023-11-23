@@ -46,13 +46,13 @@ const EquipmentOrders: React.FC = () => {
       <div>
         <h2>Scheduled orders</h2>
         {data?.queuedOrders.map((order => (
-          <div>
+          <div key={order.orderId}>
             {order.orderId}
           </div>
         )))}
         <h2>Completed orders</h2>
         {data?.completedOrders.map((order => (
-          <div>
+          <div key={order.orderId}>
             {order.orderId}
           </div>
         )))}
