@@ -1,36 +1,11 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Here's what I learned 
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- I wanted to build something using the new Next 13 hybrid components architecture. I had some idea that it would benefit the solution. It turned out to be mostly a distraction. 
+- I spent a while designing a lamp in svg. While it didn't take long, I could have waited with that until near the end, and adjust to my time budget. 
+- I wanted to get a cool experience for the status lamp ui and didn't think too much about the requirements. 
+- I skipped a lot of the server using json and useState
+- When I began building something more serious for the data layer I tried generating it with random data. It didn't work well with the server rendered components. 
+- I took a third stab at making a better architecture for the frontend by moving to a pages (next 12) structure and mocking the data inline. I began with writing what each page should do and read the specs again. I realized that I had imagined a part that were not needed: Datestamp. I also reconsidered how an order and a status are connected. 
+- My next step would be to design a simple rest api backend for orders and equipment statuses. I have a clearer view on how they would interact with each other. 
+- I considered the question of polling vs web socket. I think the socket would make most sense om the supervisor dashboard. The equipment lights are write only. 
+- For the data layer it could be something like Redux. More than one thing needs to happen for some operations and sometimes there is a state machine underlying, like how the colors transition and the yellow color's name depends on the previous color. 
