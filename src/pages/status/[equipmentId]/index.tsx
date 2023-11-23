@@ -22,12 +22,16 @@ const statusColors = ['red', 'yellow', 'green'];
 
 const Status: React.FC = () => {
   const [activeColor, setActiveColor] = React.useState('red');
+  const [status, setStatus] = React.useState('off'); // ['off', 'warming up', 'working', 'cooling down'
   const router = useRouter();
   const equipmentId = router.query.equipmentId;
   const updateColor = (color: string) => fetch(`/api/${equipmentId}/status`, {
     method: 'PUT',
     body: color,
-  }).then(() => setActiveColor(color));
+  }).then((res => res.json())).then((data) => {
+    setActiveColor(color);
+    setStatus(data.status);
+  });
   return (
     <div>
       {statusColors
@@ -40,6 +44,7 @@ const Status: React.FC = () => {
           </div>
         )}
         <p>Client ID: {equipmentId}</p>
+        <p>Status: {status}</p>
     </div>
   );
 };
