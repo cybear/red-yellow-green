@@ -31,7 +31,7 @@ const Status: React.FC = () => {
   }).then((res => res.json())).then((data) => {
     setActiveColor(color);
     setStatus(data.status);
-  });
+  }).catch(() => {console.error('Failed to fetch')});
   return (
     <div>
       {statusColors

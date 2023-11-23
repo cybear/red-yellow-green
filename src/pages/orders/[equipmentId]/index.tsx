@@ -21,7 +21,7 @@ const EquipmentOrders: React.FC = () => {
       .then(res => res.json())
       .then((equipmentsData: Equipment) => {
         setData(equipmentsData)
-      });
+      }).catch(() => {console.error('Failed to fetch')});
   }, [equipmentId]);
 
   return (
@@ -38,7 +38,9 @@ const EquipmentOrders: React.FC = () => {
           headers: {
             'Content-Type': 'application/json',
           },
-        }).then(res => res.json()).then((data) => setData(data));
+        }).then(res => res.json())
+        .then((data) => setData(data))
+        .catch(() => {console.error('Failed to fetch')});
       }}>Add to queue</button>
       <hr />
       <div>

@@ -13,7 +13,8 @@ const Dashboard: React.FC = () => {
   useEffect(() => {
     const fetcher = () => fetch('http://localhost:3000/api/equipments')
     .then(res => res.json())
-    .then(data => setData(data));
+    .then(data => setData(data))
+    .catch(() => {console.error('Failed to fetch')});
     timerIdRef.current = setInterval(fetcher, 1000);
     return () => {
       timerIdRef.current && clearInterval(timerIdRef.current);
