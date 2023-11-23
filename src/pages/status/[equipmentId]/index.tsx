@@ -24,12 +24,15 @@ const Status: React.FC = () => {
   const [activeColor, setActiveColor] = React.useState('red');
   const router = useRouter();
   const equipmentId = router.query.equipmentId;
-
+  const updateColor = (color: string) => fetch(`/api/${equipmentId}/status`, {
+    method: 'POST',
+    body: color,
+  }).then(() => setActiveColor(color));
   return (
     <div>
       {statusColors
         .map((color) =>
-          <div key={color} onClick={() => setActiveColor(color)}>
+          <div key={color} onClick={() => updateColor(color)}>
             <Light
               color={color}
               isActive={color === activeColor}
