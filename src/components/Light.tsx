@@ -32,7 +32,7 @@ const Light: React.FC<LightProps> = ({ color, isActive, width = 200, height = 20
         stroke={'#000000'}
         strokeWidth={5}
       />
-      /* semi transparent circle */
+      {/* semi transparent circle */}
       <circle
         cx="100"
         cy="100"
