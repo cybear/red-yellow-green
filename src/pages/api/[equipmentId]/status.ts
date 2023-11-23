@@ -19,7 +19,7 @@ const getNewStatus = (oldColor: Status['color'], newColor: Status['color']) => {
   throw new Error('Invalid color combo');
 };
 
-const POST = (req: NextApiRequest, res: NextApiResponse) => {
+const PUT = (req: NextApiRequest, res: NextApiResponse) => {
   const { equipmentId } = req.query;
   const newColor = req.body;
   const currentEquipment = equipmentData.find((equipment) => equipment.id === equipmentId);
@@ -56,8 +56,8 @@ const POST = (req: NextApiRequest, res: NextApiResponse) => {
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
   switch (req.method) {
-    case 'POST':
-      return POST(req, res);
+    case 'PUT':
+      return PUT(req, res);
     default:
       return res.status(405).end(`Method ${req.method} Not Allowed`);
   };

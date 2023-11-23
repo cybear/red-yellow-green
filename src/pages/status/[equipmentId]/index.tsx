@@ -25,7 +25,7 @@ const Status: React.FC = () => {
   const router = useRouter();
   const equipmentId = router.query.equipmentId;
   const updateColor = (color: string) => fetch(`/api/${equipmentId}/status`, {
-    method: 'POST',
+    method: 'PUT',
     body: color,
   }).then(() => setActiveColor(color));
   return (
