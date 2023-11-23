@@ -32,11 +32,19 @@ const EquipmentOrders: React.FC = () => {
   return (
     <>
       <h1>Equipment Orders for {router.query.equipmentId}</h1>
-      <form>
         <h2>Add a new order</h2>
         <input type="text" id="orderId" name="orderId" placeholder='Order ID' />
-        <button type="submit">Add to queue</button>
-      </form>
+        <button onClick={() => {
+        fetch(`http://localhost:3000/api/${router.query.equipmentId}/order`, {
+          method: 'POST',
+          body: JSON.stringify({
+            orderId: (document.getElementById('orderId') as HTMLInputElement)?.value,
+          }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+      }}>Add to queue</button>
       <hr />
       <div>
           <h2>Scheduled orders</h2>
