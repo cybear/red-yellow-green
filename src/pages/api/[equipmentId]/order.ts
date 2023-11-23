@@ -16,7 +16,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
       }
       const orderId = req.body;
       equipment.queuedOrders.push(orderId);
-      return res.status(200).json(equipmentData);
+      return res.status(200).json(equipment);
     default:
       return res.status(405).end(`Method ${req.method} Not Allowed`);
   };

@@ -16,7 +16,6 @@ const EquipmentOrders: React.FC = () => {
   const router = useRouter();
   const [data, setData] = useState<Equipment>();
   const equipmentId = router.query.equipmentId;
-  console.log({equipmentId})
   useEffect(() => {
     equipmentId && fetch(`http://localhost:3000/api/${equipmentId}/equipment`)
       .then(res => res.json())
@@ -39,12 +38,18 @@ const EquipmentOrders: React.FC = () => {
           headers: {
             'Content-Type': 'application/json',
           },
-        });
+        }).then(res => res.json()).then((data) => setData(data));
       }}>Add to queue</button>
       <hr />
       <div>
         <h2>Scheduled orders</h2>
         {data?.queuedOrders.map((order => (
+          <div>
+            {order.orderId}
+          </div>
+        )))}
+        <h2>Completed orders</h2>
+        {data?.completedOrders.map((order => (
           <div>
             {order.orderId}
           </div>
