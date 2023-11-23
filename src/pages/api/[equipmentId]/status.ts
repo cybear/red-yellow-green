@@ -29,7 +29,7 @@ const PUT = (req: NextApiRequest, res: NextApiResponse) => {
   const oldColor = currentEquipment.currentColor;
   if (oldColor !== newColor) {
     // Start a new order
-    if (oldColor !== 'green' && newColor === 'green') {
+    if (newColor === 'green') {
       const newOrder = currentEquipment.queuedOrders.shift();
       if (newOrder) {
         currentEquipment.currentOrder = newOrder;

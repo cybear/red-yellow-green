@@ -2,6 +2,7 @@
 This is the dashboard page.
 It shows the current status and order of all equipments.
 */
+import Light from "@/components/Light";
 import { Equipment } from "@/utils/equipmentData";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -20,8 +21,8 @@ const Dashboard: React.FC = () => {
       <h1>Dashboard</h1>
       {data.map(({ id, currentColor, currentStatus, currentOrder }) => (
       <div key={id}>
-        <h2><Link href={`/status/${id}`}>{id}</Link></h2>
-        <p>Status: <span style={{color: currentColor}}>{currentStatus}</span></p>
+        <h2><Light color={currentColor} isActive width={20} height={20} /> <Link href={`/status/${id}`}>{id}</Link></h2>
+        <p>Status: {currentStatus}</p>
         <p>Order: <span style={{color: currentColor}}>{currentOrder?.orderId}</span></p>
       </div>
       ))}
