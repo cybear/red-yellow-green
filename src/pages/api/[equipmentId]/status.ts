@@ -3,7 +3,7 @@ A Status belongs to an Equipment.
 When the status is changed, it can affect the Equipment's orders.
 POST: Add a new status to an Equipment.
 */
-import { equipmentData } from '@/utils/equipmentData';
+import { getEquipment } from '@/utils/equipmentData';
 import { NextApiRequest, NextApiResponse } from 'next'
 
 export type Status = {
@@ -22,7 +22,7 @@ const getNewStatus = (oldColor: Status['color'], newColor: Status['color']) => {
 const PUT = (req: NextApiRequest, res: NextApiResponse) => {
   const { equipmentId } = req.query;
   const newColor = req.body;
-  const currentEquipment = equipmentData.find((equipment) => equipment.id === equipmentId);
+  const currentEquipment = getEquipment(equipmentId as string);
   if (!currentEquipment) {
     return res.status(404).end(`Equipment ${equipmentId} not found.`);
   }
@@ -47,6 +47,7 @@ const PUT = (req: NextApiRequest, res: NextApiResponse) => {
   const newStatus = getNewStatus(oldColor, newColor);
   currentEquipment.currentColor = newColor;
   currentEquipment.currentStatus = newStatus;
+  console.log('Updated', currentEquipment);
   const obj = {
     equipmentId,
     color: newColor,

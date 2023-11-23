@@ -24,7 +24,7 @@ const equimentNames = [
   'Manual printer',
 ];
 
-export const equipmentData: Array<Equipment> = equimentNames.map((name) => ({
+const equipmentData: Array<Equipment> = equimentNames.map((name) => ({
   id: name,
   currentColor: 'red',
   currentStatus: 'Standing still',
@@ -32,3 +32,7 @@ export const equipmentData: Array<Equipment> = equimentNames.map((name) => ({
   queuedOrders: [],
   completedOrders: [],
 }));
+
+export const getEquipments = (): Array<Equipment> => equipmentData;
+export const getEquipment = (id: string) => 
+  equipmentData.find((equipment) => equipment.id === id);

@@ -1,12 +1,12 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { equipmentData } from '@/utils/equipmentData';
+import { getEquipment } from '@/utils/equipmentData';
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
   console.warn(req.method, req.query);
   switch (req.method) {
     case 'GET':
       const { equipmentId } = req.query;
-      const equipment = equipmentData.find((equipment) => equipment.id === equipmentId);
+      const equipment = getEquipment(equipmentId as string);
       if (!equipment) {
         return res.status(404).end(`Equipment with id ${equipmentId} not found.`);
       }
