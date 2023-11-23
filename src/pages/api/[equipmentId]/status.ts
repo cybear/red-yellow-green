@@ -46,6 +46,7 @@ const PUT = (req: NextApiRequest, res: NextApiResponse) => {
   }
   const newStatus = getNewStatus(oldColor, newColor);
   currentEquipment.currentColor = newColor;
+  currentEquipment.currentStatus = newStatus;
   const obj = {
     equipmentId,
     color: newColor,
