@@ -2,25 +2,27 @@
 This is the dashboard page.
 It shows the current status and order of all equipments.
 */
+import { Equipment } from "@/utils/equipmentData";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const Dashboard: React.FC = () => {
-  // Todo fetch from backend
-  const equimentData = [
-    'Brick Machine 1',
-    'Brick Machine 2',
-    'Brick Machine 3',
-    'Bagging Machine 1',
-    'Manual printer',
-  ];
+  const [data, setData] = useState<Array<Equipment>>([]);
+  useEffect(() => {
+    fetch('http://localhost:3000/api/equipments')
+      .then(res => res.json())
+      .then(data => 
+      setData(data));
+  }, []);
+
   return (
     <div>
       <h1>Dashboard</h1>
-      {equimentData.map((equipmentId) => (
-      <div key={equipmentId}>
-        <h2><Link href={`/status/${equipmentId}`}>{equipmentId}</Link></h2>
-        <p>Status: <span style={{color: 'green'}}>Working</span></p>
-        <p>Order: <span style={{color: 'green'}}>Order 1</span></p>
+      {data.map(({ id, currentColor, currentStatus, currentOrder }) => (
+      <div key={id}>
+        <h2><Link href={`/status/${id}`}>{id}</Link></h2>
+        <p>Status: <span style={{color: currentColor}}>{currentStatus}</span></p>
+        <p>Order: <span style={{color: currentColor}}>{currentOrder?.orderId}</span></p>
       </div>
       ))}
     </div>
