@@ -37,7 +37,7 @@ const PUT = (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     // Complete the current order
-    if (currentEquipment.currentColor === 'green' && newColor !== 'green') {
+    if (currentEquipment.currentColor === 'green') {
       if (currentEquipment.currentOrder) {
         currentEquipment.completedOrders.push(currentEquipment.currentOrder);
         currentEquipment.currentOrder = null;
@@ -51,7 +51,8 @@ const PUT = (req: NextApiRequest, res: NextApiResponse) => {
   const obj = {
     equipmentId,
     color: newColor,
-    status: newStatus
+    status: newStatus,
+    currentOrder: currentEquipment.currentOrder,
   };
   return res.status(200).json(obj);
 }

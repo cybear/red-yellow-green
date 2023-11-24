@@ -27,6 +27,14 @@ const EquipmentOrders: React.FC = () => {
   return (
     <>
       <h1>Equipment Orders for {router.query.equipmentId}</h1>
+      {data?.currentOrder && (
+        <>
+          <h2>Current order</h2>
+          <div>
+            {data.currentOrder.orderId}
+          </div>
+        </>
+      )}
       <h2>Add a new order</h2>
       <input type="text" id="orderId" name="orderId" placeholder='Order ID' />
       <button onClick={() => {

@@ -22,7 +22,8 @@ const statusColors = ['red', 'yellow', 'green'];
 
 const Status: React.FC = () => {
   const [activeColor, setActiveColor] = React.useState('red');
-  const [status, setStatus] = React.useState('off'); // ['off', 'warming up', 'working', 'cooling down'
+  const [status, setStatus] = React.useState('off');
+  const [currentOrder, setCurrentOrder] = React.useState('');
   const router = useRouter();
   const equipmentId = router.query.equipmentId;
   const updateColor = (color: string) => fetch(`/api/${equipmentId}/status`, {
@@ -31,6 +32,7 @@ const Status: React.FC = () => {
   }).then((res => res.json())).then((data) => {
     setActiveColor(color);
     setStatus(data.status);
+    setCurrentOrder(data.currentOrder);
   }).catch(() => {console.error('Failed to fetch')});
   return (
     <div>
@@ -45,6 +47,7 @@ const Status: React.FC = () => {
         )}
         <p>Client ID: {equipmentId}</p>
         <p>Status: {status}</p>
+        <p>Current order: {currentOrder?.orderId}</p>
     </div>
   );
 };
